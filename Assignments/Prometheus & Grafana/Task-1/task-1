@@ -1,0 +1,11 @@
+Task Description:
+
+Install Prometheus and Grafana on a Linux EC2 machine, connect Prometheus to Grafana, and create a dashboard to view metrics.
+
+================================================================================================================================
+Steps :
+
+1. Create 2 EC2 servers 
+name - task-prom , task-app
+type - t2.micro
+SG - ports -> http, ssh ,80, 9090,9100

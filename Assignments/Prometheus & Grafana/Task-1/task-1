@@ -62,11 +62,11 @@ SG - ports -> http,https,ssh,9090,9100,3000.
 
     7.4 Dashbaord is loaded with metrics to monitor 
           Node Exporter Full dashboard shows :
-              CPU usage per core
-              Memory & Swap usage
+              CPU usage 
+              Memory usage
               Disk I/O and Filesystem usage
-              Network traffic
-              System load and uptime
+              Network metrics
+              load and uptime
 
  ----------------------------- please refer to screenshot 1.10 -------------------------------
 

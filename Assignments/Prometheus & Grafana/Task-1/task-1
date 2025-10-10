@@ -6,8 +6,8 @@ Install Prometheus and Grafana on a Linux EC2 machine, connect Prometheus to Gra
 Steps :
 
 1. Creating 2 EC2 servers -- 1 for Prometheus & another as a node to monitor metrics. 
-name - task-prom-grafa
-type - t3.micro
+name - task-prom-grafa , task-node
+type - t3.micro , t2.micro  .. respectively 
 SG - ports -> http,https,ssh,9090,9100,3000.
 
 2. Downloading & installing prometheus 

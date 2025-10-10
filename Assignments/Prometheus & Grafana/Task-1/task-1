@@ -5,7 +5,72 @@ Install Prometheus and Grafana on a Linux EC2 machine, connect Prometheus to Gra
 ================================================================================================================================
 Steps :
 
-1. Create 2 EC2 servers 
-name - task-prom , task-app
-type - t2.micro
-SG - ports -> http, ssh ,80, 9090,9100
+1. Creating 2 EC2 servers -- 1 for Prometheus & another as a node to monitor metrics. 
+name - task-prom-grafa
+type - t3.micro
+SG - ports -> http, ssh ,80, 9090,9100.
+
+2. Downloading & installing prometheus 
+    2.1 download prometheus using 
+        link https://github.com/prometheus/prometheus/releases/download/v3.7.0-rc.0/prometheus-3.7.0-rc.0.linux-amd64.tar.gz 
+    2.2. creating prometheus user without home & Setting user permissions.
+    2.3. Creating directories & moving binaries & config files.
+    2.4  Creating a systemd service - prometheus service file. /etc/systemd/system/prometheus.service
+    2.5  Reloading systemd service - daemon , enabling & starting prometheus service.
+    2.6 verified the status running & prometheus UI - http://13.204.87.179:9090/targets
+
+ ----------------------------- please refer to screenshot 1.1 & 1.2 -------------------------------
+
+3. Downloading & installing Node Exporter to scrape metrics of nodes to prometheus server.
+    3.1 download node-exporter using 
+        link  https://github.com/prometheus/node_exporter/releases/download/v1.9.1/node_exporter-1.9.1.linux-amd64.tar.gz
+    3.2. creating node-exporter user without home & Setting user permissions.
+    3.3. Creating directories & moving binaries & config files.
+    3.4  Creating a systemd service - node-exporter service file /etc/systemd/system/node-exporter.service
+    3.5  Reloading systemd service - daemon , enabling & starting node-exporter service.
+    3.6 verified the status running & Node Exporter UI  -  http://43.205.126.72:9100/
+
+ ----------------------------- please refer to screenshot 1.3 & 1.4  -------------------------------
+
+4. To monitor the nodes in prometheus - added the job node-server as target to the prometheus.yaml file.
+       static config:  - targets: ["43.205.126.72:9100"]
+
+5. restarting prometheus service & checking status of prometheus services in the browser 
+
+ ----------------------------- please refer to screenshot 1.5  -------------------------------
+
+6. Downloading & Installing Grafana as a standalone binary
+      6.1 download grafana  using 
+        link  wget https://dl.grafana.com/grafana-enterprise/release/12.2.0/grafana-enterprise_12.2.0_17949786146_Linux_amd64.tar-gz
+      6.2. creating grafana user without home & Setting user permissions for /opt/grafana , /etc/grafana, /var/lib, /var/log, /usr/localbin/grafan*
+      6.3. Creating directories & moving binaries (grafana, grafana-server, grafana-cli)  & config files (grafana.ini) .
+      6.4  Creating a systemd service - grafana service file /etc/systemd/system/grafana.service
+      6.5  Reloading systemd service - daemon , enabling & starting grafana service.
+      6.6 verified the status running & grafana Dashboard  -  http://13.204.87.179:3000/
+
+ ----------------------------- please refer to screenshot 1.6 & 1.7 -------------------------------
+
+7. Logging in to grafana - username - admin , pwd - admin 
+    7.1 under Home click on Connection -> add new connection -> choose Data Source -> Prometheus ( installed ) 
+    7.2 Give a Name & Paste the Prometheus server's publicip with port 9090 (http://13.204.87.179:9090) , Clcick save & Test 
+
+----------------------------- please refer to screenshot 1.8  -------------------------------
+
+    7.3 Click Import Dashboard -> provide Id (1860 - Node exporter) -> click Load -> click import 
+
+----------------------------- please refer to screenshot 1.9 -------------------------------
+
+    7.4 Dashbaord is loaded with metrics to monitor 
+          Node Exporter Full dashboard shows :
+              CPU usage per core
+              Memory & Swap usage
+              Disk I/O and Filesystem usage
+              Network traffic
+              System load and uptime
+
+ ----------------------------- please refer to screenshot 1.10 -------------------------------
+
+              
+              
+              
+              

@@ -8,7 +8,7 @@ Steps :
 1. Creating 2 EC2 servers -- 1 for Prometheus & another as a node to monitor metrics. 
 name - task-prom-grafa
 type - t3.micro
-SG - ports -> http, ssh ,80, 9090,9100.
+SG - ports -> http,https,ssh,9090,9100,3000.
 
 2. Downloading & installing prometheus 
     2.1 download prometheus using 

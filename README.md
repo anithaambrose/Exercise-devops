@@ -1,1 +1,1 @@
-# guvi-devops
+# Handson Exercises for Devops

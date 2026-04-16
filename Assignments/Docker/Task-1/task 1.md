@@ -7,30 +7,35 @@ AMI - Ubuntu
 ### 2. Intsalled Docker 
 
 ### Add Docker's official GPG key:
+
+```
 sudo apt-get update
 sudo apt-get install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
+```
 ### Add the repository to Apt sources:
+
+```
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
   $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
+```
 
 ### Verified:
 ubuntu@ip-172-31-11-141:~$ docker --version
 Docker version 28.3.1, build 38b7060
 ubuntu@ip-172-31-11-141:~$ 
 
-3.Docker pull - to pull the images from the dockerhub registry (public)
+3. docker pull - to pull the images from the dockerhub registry (public)
 
 4. Docker  images - to list the images 
 
-5.docker run - to run the docker conatiner from the images 
+5. docker run - to run the docker conatiner from the images 
       
   opens container in root user mode - Ctrl+p Ctrl+q to exit so the container runs in the background.
 
@@ -38,13 +43,13 @@ ubuntu@ip-172-31-11-141:~$
 
 7. docker ps -a -> lists all process of the conatiners even if its exited.
 
-8.doc exec ->  attachs my shell to the running container
+8. doc exec ->  attachs my shell to the running container
 
-9.docker stop - stops the running container
+9. docker stop - stops the running container
 
-10.docker rm -> removes the container from the containers process history.
+10. docker rm -> removes the container from the containers process history.
 
-11.docker rmi -> removes the docker image
+11. docker rmi -> removes the docker image
 
 12. docker login - to loginto the private dockerhub repository
 
@@ -52,11 +57,11 @@ ubuntu@ip-172-31-11-141:~$
 
 14. docker push -> to push the image from local repo to private repo (dockerhub)
 
-15.docker logout -> logs out of the registry.
+15. docker logout -> logs out of the registry.
 
 16. docker volume create - create a volume for docker
 
-17. docker rn -it --name -v -> runs the image with mounted volume
+17. docker run -it --name -v -> runs the image with mounted volume
 
 18. create a file inside the container/data directory.
 
@@ -64,7 +69,7 @@ ubuntu@ip-172-31-11-141:~$
 
 20. docker network create -> creates a newtork 
 
-21. docker run -dit --name --network -> runs two ubuntu containers in the same network
+21. docker run -d --name --network -> runs two ubuntu containers in the same network
 
 22. docker exec -> lets you connect  between the two containers.
 

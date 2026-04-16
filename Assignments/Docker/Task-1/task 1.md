@@ -1,18 +1,18 @@
-Install docker on EC2 and explore the docker commands (docker images, containers, volumes, network)
+# Install docker on EC2 and explore the docker commands (docker images, containers, volumes, network)
 
-Steps :
-1. Created EC2 instance.
+## Steps :
+### 1. Created EC2 instance.
 EC2 Name - Dockerdemo
 AMI - Ubuntu 
-2. Intsalled Docker 
+### 2. Intsalled Docker 
 
-# Add Docker's official GPG key:
+### Add Docker's official GPG key:
 sudo apt-get update
 sudo apt-get install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
-# Add the repository to Apt sources:
+### Add the repository to Apt sources:
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
   $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
@@ -21,7 +21,7 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 
-Verified:
+### Verified:
 ubuntu@ip-172-31-11-141:~$ docker --version
 Docker version 28.3.1, build 38b7060
 ubuntu@ip-172-31-11-141:~$ 
@@ -31,7 +31,8 @@ ubuntu@ip-172-31-11-141:~$
 4. Docker  images - to list the images 
 
 5.docker run - to run the docker conatiner from the images 
-      opens container in root user mode - Ctrl+p Ctrl+q to exit so the container runs in the background.
+      
+  opens container in root user mode - Ctrl+p Ctrl+q to exit so the container runs in the background.
 
 6. docker ps  - list the running containers
 
